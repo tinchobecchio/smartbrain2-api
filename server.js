@@ -20,7 +20,7 @@ const db = knex({
         database: process.env.DATABASE_DB
     }
 });
-
+const PORT = process.env.PORT || 3000
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -32,6 +32,6 @@ app.get('/profile/:id', (req,res) => { profile.handleProfileGet(req,res,db)})
 app.post('/imageurl', (req,res) => { image.handleAPICall(req,res) })
 app.put('/image', (req,res) => { image.handleImagePut(req,res,db) })
 
-app.listen(3000, () => {
-    console.log('listening on port 3000')
+app.listen(PORT, () => {
+    console.log(`Listening on port: ${PORT}`)
 })
